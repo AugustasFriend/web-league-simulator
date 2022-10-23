@@ -1,24 +1,23 @@
-import React from 'react';
-import logo from './logo.svg';
-import './App.css';
+import React from "react";
+import "./App.css";
+import { BrowserRouter, Route, Routes } from "react-router-dom";
+import HomeScreen from "./use-cases/home/HomeScreen";
+import ScheduleScreen from "./use-cases/schedule/ScheduleScreen";
+import StandingsScreen from "./use-cases/standings/StandingsScreen";
+import { routes } from "./routes/AppRoutes";
+import { Navbar } from "./navbar/Navbar";
 
 function App() {
   return (
-    <div className="App">
-      <header className="App-header">
-        <img src={logo} className="App-logo" alt="logo" />
-        <p>
-          Edit <code>src/App.tsx</code> and save to reload.
-        </p>
-        <a
-          className="App-link"
-          href="https://reactjs.org"
-          target="_blank"
-          rel="noopener noreferrer"
-        >
-          Learn React
-        </a>
-      </header>
+    <div>
+      <BrowserRouter>
+        <Navbar />
+        <Routes>
+          <Route element={<HomeScreen />} path={routes.home()} />
+          <Route element={<ScheduleScreen />} path={routes.schedule()} />
+          <Route element={<StandingsScreen />} path={routes.standings()} />
+        </Routes>
+      </BrowserRouter>
     </div>
   );
 }
